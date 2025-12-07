@@ -33,8 +33,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'public/hotspot.html'),
-        hotspot: path.resolve(__dirname, 'hotspot.html')
+        main: path.resolve(__dirname, 'index.html'),
+        hotspot: path.resolve(__dirname, 'public/hotspot.html')
       }
     }
   }
