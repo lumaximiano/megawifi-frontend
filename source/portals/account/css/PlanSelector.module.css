@@ -1,0 +1,47 @@
+/* frontend/src/components/PlanSelector.module.css */
+.planGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.planCard {
+    display: flex;
+    flex-direction: column;
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.planCard:has(input:checked) {
+    border-color: #3182ce;
+}
+
+.planCard input {
+    display: none;
+}
+
+.planDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.planName {
+    font-weight: 600;
+}
+
+.planPrice {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.planDuration {
+    font-size: 0.9rem;
+    color: #718096;
+}

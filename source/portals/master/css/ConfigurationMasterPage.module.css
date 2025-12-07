@@ -1,0 +1,125 @@
+/* frontend/src/pages/ConfigurationMasterPage.module.css */
+
+.configContainer {
+    width: 100%;
+}
+
+.pageTitle {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.configSection {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.configSection h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.formGroup input, .formGroup textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.formGroup textarea {
+    resize: vertical;
+}
+
+.inputHint {
+    font-size: 0.8rem;
+    color: #718096;
+    margin: 0.5rem 0 0 0;
+}
+
+.saveButton {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.saveButton:hover {
+    background-color: #2b6cb0;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addButton {
+    background-color: #38a169; /* Verde */
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.plansTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+
+.plansTable th, .plansTable td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.plansTable th {
+    background-color: #f7fafc;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.editButton, .deleteButton {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.editButton { background-color: #ecc94b; color: #1a202c; }
+.deleteButton { background-color: #f56565; color: white; }

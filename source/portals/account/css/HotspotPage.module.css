@@ -1,0 +1,78 @@
+/* frontend/src/pages/HotspotPage.module.css - v8.0 (Tabela de Clientes) */
+
+.pageContainer {
+    padding: 2rem;
+}
+
+.pageDescription {
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    color: #4a5568;
+    font-size: 1.1rem;
+}
+
+.tableContainer {
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.clientsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.clientsTable th,
+.clientsTable td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.clientsTable thead {
+    background-color: #f7fafc;
+}
+
+.clientsTable th {
+    font-size: 0.9rem;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.clientsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.clientsTable td:first-child {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.statusInactive {
+    background-color: #f1f5f9;
+    color: #64748b;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.configButton {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.configButton:hover {
+    background-color: #2b6cb0;
+}

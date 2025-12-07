@@ -1,0 +1,25 @@
+/* frontend/src/components/BackgroundPicker.module.css */
+.pickerGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+}
+
+.thumbnail {
+    border: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.thumbnail.selected {
+    border-color: #3182ce;
+}

@@ -1,0 +1,128 @@
+/* source/portals/master/css/FinancePage.module.css */
+
+.financePage {
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a202c;
+}
+
+/* --- Grade de KPIs --- */
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.kpiCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.kpiLabel {
+    font-size: 0.9rem;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.kpiValue {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.kpiValue.positive { color: #38a169; } /* Verde para lucro */
+.kpiValue.negative { color: #e53e3e; } /* Vermelho para prejuízo */
+
+/* --- Seções --- */
+.section {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.addButton {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.addButton:hover {
+    background-color: #2b6cb0;
+}
+
+/* --- Tabela --- */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #a0aec0;
+    background-color: #f7fafc;
+}
+
+/* --- Status Badges --- */
+.statusBadge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.statusPaid { background-color: #c6f6d5; color: #2f855a; }
+.statusPending { background-color: #feebc8; color: #975a16; }
+.statusOverdue { background-color: #fed7d7; color: #c53030; }
+
+.loading, .error {
+    font-size: 1.2rem;
+    color: #718096;
+    text-align: center;
+    padding: 4rem;
+}

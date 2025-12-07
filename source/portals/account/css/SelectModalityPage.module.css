@@ -1,0 +1,126 @@
+/* frontend/src/pages/SelectModalityPage.module.css */
+
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+}
+
+.container h1 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #4a5568;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+}
+
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.activeCard {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.3);
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #2d3748;
+}
+
+.card p {
+    color: #718096;
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.cardFooter {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    border: none;
+    border-radius: 99px;
+    padding: 6px 16px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.active {
+    background-color: #3182ce;
+    color: white;
+}
+
+.inactive {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.inactive:hover {
+    background-color: #cbd5e0;
+}
+
+/* --- MUDANÇA APLICADA AQUI --- */
+.personalizeButton {
+    background-color: #3182ce; /* Cor azul */
+    color: white; /* Texto branco */
+    border: none;
+    border-radius: 6px; /* Bordas levemente arredondadas */
+    padding: 6px 16px; /* Mesmo padding do outro botão */
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.personalizeButton:hover {
+    background-color: #2b6cb0; /* Azul um pouco mais escuro no hover */
+}
+
+.error {
+    color: #e53e3e;
+    font-weight: bold;
+}

@@ -1,0 +1,212 @@
+/* frontend/src/components/ClientPortal.module.css */
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header {
+    text-align: center;
+    color: #1a202c;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.subHeader {
+    text-align: center;
+    color: #4a5568;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.planGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.planCard {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.planName {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.planDuration {
+    color: #718096;
+    margin: 8px 0 16px 0;
+}
+
+.planPrice {
+    font-size: 2em;
+    color: #2c5282;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+}
+
+.buyButton {
+    background: #3182ce;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.buyButton:hover {
+    background: #2b6cb0;
+}
+
+.statusMessage {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 40px 0;
+    color: #4a5568;
+}
+
+.errorMessage {
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+.qrCodeImage {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    display: block;
+}
+
+.copyCodeInput {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.copyButton {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #888;
+}
+
+.successContent {
+    color: #28a745;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.successButton {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.expiredTitle {
+    color: #d9534f;
+}
+
+.expiredText {
+    color: #4a5568;
+    font-size: 1.1em;
+    margin: 20px 0;
+}
+
+.expiredButton {
+    background: #3182ce;
+}
+
+.modalityButton {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.modalityButton:hover {
+    background: #5a6268;
+}

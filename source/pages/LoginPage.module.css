@@ -1,0 +1,83 @@
+/* frontend/src/pages/LoginPage.module.css - v2.1 (Com Hierarquia de Marca) */
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 380px; /* Um pouco mais largo para acomodar o novo layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* NOVO: Estilo para o título principal "MEGAWIFI" */
+.title {
+  font-size: 42px; /* Tamanho grande e impactante */
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  letter-spacing: 1px; /* Leve espaçamento entre as letras */
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-top: -10px; /* Sobe um pouco para ficar mais perto do título */
+  margin-bottom: 20px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  background-color: #f0f2f5;
+  border: 1px solid #dde1e6;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #A8E924;
+  box-shadow: 0 0 0 2px rgba(168, 233, 36, 0.2);
+}
+
+.button {
+  background-color: #A8E924;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #c0ff2e;
+}
+
+.error {
+  color: #d93025;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}

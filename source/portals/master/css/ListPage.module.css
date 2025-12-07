@@ -1,0 +1,164 @@
+/* frontend/src/pages/ListPage.module.css - v4 - BOTÕES SEPARADOS + MENU DE STATUS */
+
+.listPageContainer {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.addButton {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.addButton:hover {
+    background-color: #2b6cb0;
+}
+
+.content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTILOS DA TABELA --- */
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content th, .content td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle; /* Alinha o conteúdo verticalmente */
+}
+
+.content th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.content tr:hover {
+    background-color: #f7fafc;
+}
+
+/* Alinha o cabeçalho "Ações" à direita */
+.actionsHeader {
+    text-align: right !important;
+}
+
+/* Célula que contém os botões e o menu */
+.actionsCell {
+    display: flex;
+    justify-content: flex-end; /* Alinha tudo à direita */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- ESTILOS PARA O INDICADOR DE STATUS --- */
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.statusActive {
+    background-color: #c6f6d5;
+    color: #2f855a;
+}
+
+.statusInactive, .statusBloqueado {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+}
+
+/* --- BOTÕES DE AÇÃO INDIVIDUAIS --- */
+.editButton, .deleteButton, .clientsButton {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.1s;
+}
+.editButton:hover, .deleteButton:hover, .clientsButton:hover {
+    transform: scale(1.05);
+}
+
+.editButton { background-color: #ecc94b; color: #1a202c; }
+.deleteButton { background-color: #f56565; color: white; }
+.clientsButton { background-color: #3182ce; color: white; }
+
+
+/* --- ESTILOS PARA O NOVO MENU DE STATUS --- */
+.actionsMenuContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.menuButton {
+    background: none;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #718096;
+}
+.menuButton:hover {
+    background-color: #edf2f7;
+    color: #1a202c;
+}
+
+.menuDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    width: max-content;
+    padding: 0.5rem 0;
+    margin-top: 0.25rem;
+}
+
+.menuItem {
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: block;
+    white-space: nowrap;
+}
+.menuItem:hover {
+    background-color: #f7fafc;
+}
+
+.menuItemSuccess { color: #38a169; }
+.menuItemWarning { color: #dd6b20; }

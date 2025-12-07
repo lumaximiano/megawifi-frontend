@@ -1,0 +1,69 @@
+/* frontend/src/components/StatCard.module.css */
+
+.statCard {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito hover só acontece se o card for clicável */
+.statCard.clickable:hover {
+    cursor: pointer;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.cardIcon {
+    font-size: 2.5rem;
+    color: #4299e1;
+    /* Azul */
+    background-color: #ebf8ff;
+    /* Azul bem claro */
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardContent {
+    flex: 1;
+}
+
+.cardTitle {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #718096;
+    /* Cinza */
+}
+
+.cardValueContainer {
+    display: flex;
+    align-items: baseline;
+}
+
+/* Estilo padrão para o valor, caso ele seja passado como string/número */
+.cardValue {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.cardDetails {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #718096;
+}
+
+.cardDetails strong {
+    color: #4a5568;
+}

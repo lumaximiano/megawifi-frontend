@@ -1,0 +1,95 @@
+/* source/portals/master/css/ServerStatusPage.module.css */
+
+.statusPage {
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a202c;
+}
+
+/* --- Grade de Medidores --- */
+.gaugeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.gaugeCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gaugeLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-top: 1rem;
+}
+
+.uptimeCard {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.uptimeValue {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.uptimeLabel {
+    font-size: 1rem;
+    color: #718096;
+}
+
+/* --- Seção de Gráficos --- */
+.chartSection {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.chartTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.loading, .error {
+    font-size: 1.2rem;
+    color: #718096;
+    text-align: center;
+    padding: 4rem;
+}
+
+.customTooltip {
+    background-color: rgba(30, 41, 59, 0.9); /* Fundo escuro semi-transparente */
+    border: 1px solid #4a5568;
+    border-radius: 6px;
+    padding: 0.8rem;
+    color: #f7fafc;
+}
+
+.tooltipLabel {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #cbd5e0;
+}

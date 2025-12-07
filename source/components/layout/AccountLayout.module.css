@@ -1,0 +1,105 @@
+/* source/components/AccountLayout.module.css */
+
+.layout {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7fa;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #022416;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0; /* Removido padding lateral para controle total */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 1rem 1.5rem 1rem;
+  border-bottom: 1px solid #34495e;
+  margin-bottom: 1rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem; /* Adicionado padding aqui */
+    flex-grow: 1; /* Faz a navegação ocupar o espaço disponível, empurrando o footer para baixo */
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  display: block;
+  transition: background-color 0.2s ease-in-out;
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+}
+
+.nav a:hover {
+  background-color: #345e54;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.nav a.active {
+  background-color: #2a812a;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.footer {
+    margin-top: auto; /* Garante que o footer fique na base */
+    padding: 1rem 1rem 0 1rem; /* Adiciona padding e espaço acima */
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid #34495e;
+}
+
+.userInfo span {
+    font-weight: 600;
+    color: #fff;
+}
+
+.userInfo small {
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #c53030;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.logoutButton:hover {
+    background-color: #9b2c2c;
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}

@@ -1,0 +1,29 @@
+/* frontend/src/pages/SubscriptionPlansPage.module.css */
+
+.popularPlan {
+    background-color: #ebf8ff; /* Um azul bem claro para destacar a linha inteira */
+    border-left: 4px solid #4299e1; /* Uma borda azul na esquerda para ênfase */
+}
+
+.planNameCell {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.priceCell {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c5282;
+}
+
+.popularTag {
+    background-color: #4299e1;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    margin-left: 0.75rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+}

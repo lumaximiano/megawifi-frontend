@@ -1,0 +1,346 @@
+/* frontend/source/styles/FormPage.module.css */
+
+.formContainer {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #718096;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.fieldset {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.fieldset:last-of-type {
+    margin-bottom: 0;
+}
+
+.fieldset legend {
+    font-weight: 600;
+    color: #4a5568;
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.formRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.formRow:last-child {
+    margin-bottom: 0;
+}
+
+.formGroup {
+    flex: 1;
+    min-width: 150px;
+    position: relative;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #4A5568;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+.radioGroup label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+}
+
+.submitButton,
+.cancelButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.submitButton {
+    background-color: #3182ce;
+    color: white;
+}
+
+.submitButton:hover {
+    background-color: #2b6cb0;
+}
+
+.cancelButton {
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+.cancelButton:hover {
+    background-color: #cbd5e0;
+}
+
+.generateButton {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    background-color: #d8d8d8;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 250ms ease-in-out;
+}
+
+.generateButton:hover {
+    background-color: #75db8a;
+    border-color: #a0aec0;
+}
+
+.generateButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.error,
+.success {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.error {
+    color: #c53030;
+    background-color: #fed7d7;
+}
+
+.success {
+    color: #2f855a;
+    background-color: #c6f6d5;
+}
+
+.loadingText {
+    font-size: 0.8rem;
+    color: #718096;
+}
+
+.passwordInputGroup {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+
+/* ================================================== */
+/* ESTILOS PARA PERMISSÕES (Layout de Abas e Grade)   */
+/* ================================================== */
+
+/* --- Layout de Abas (Tabs) --- */
+.tabNav {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as abas quebrem a linha em telas menores */
+    border-bottom: 2px solid #dee2e6;
+    margin-bottom: 25px;
+}
+
+.tabNav button {
+    padding: 12px 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #495057;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px; /* Alinha o botão com a borda principal */
+    transition: all 0.2s ease-in-out;
+}
+
+.tabNav button:hover {
+    background-color: #f1f3f5;
+    color: #007bff;
+}
+
+.tabNav .activeTab {
+    color: #007bff;
+    border-color: #007bff;
+    font-weight: 600;
+}
+
+.tabContent {
+    padding: 10px 5px;
+    min-height: 200px; /* Garante uma altura mínima para o conteúdo da aba */
+}
+
+
+/* --- Layout de Grade (Grid) e Componentes Internos --- */
+/* (Estes estilos são usados por ambos os modelos) */
+
+.permissionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.permissionModule {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.moduleHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+    cursor: pointer;
+    user-select: none; /* Impede a seleção de texto ao clicar */
+}
+
+.moduleHeader input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.subPermissions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 28px; /* Indentação para sub-permissões */
+}
+
+.subPermissions label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+}
+
+.subPermissions input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.subPermissions span {
+    padding: 2px 0; 
+}
+
+/* Estilo para quando a sub-permissão está desativada */
+.subPermissions input[type="checkbox"]:disabled + span {
+    color: #adb5bd;
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
+.subPermissions label:has(input:disabled) {
+    cursor: not-allowed;
+}
+
+.legendHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px; /* Espaço antes das abas */
+}
+
+.legendHeader legend {
+    margin-bottom: 0; /* Remove a margem padrão da legenda */
+}
+
+.actionsHeader {
+    display: flex;
+    gap: 10px;
+}
+
+.selectAllButton, .clearAllButton {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.selectAllButton {
+    background-color: #e7f5ff;
+    color: #007bff;
+    border: 1px solid #b3d7ff;
+}
+
+.selectAllButton:hover {
+    background-color: #d0eaff;
+}
+
+.clearAllButton {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    border: 1px solid #f1b0b7;
+}
+
+.clearAllButton:hover {
+    background-color: #e9ecef;
+}
+
+
+
+

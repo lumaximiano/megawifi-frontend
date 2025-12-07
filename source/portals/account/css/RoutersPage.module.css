@@ -1,0 +1,156 @@
+/* frontend/src/pages/RoutersPage.module.css */
+
+.input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+.button {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    width: 100%; /* Garante que a mensagem ocupe a linha toda */
+}
+
+.addForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    flex-wrap: wrap; /* Permite que os inputs quebrem a linha em telas menores */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.actionsCell {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Cores dos Botões */
+.addButton {
+    background: #007bff;
+    padding: 10px 15px;
+}
+
+.scriptButton {
+    background: #7817b8ff;
+    padding: 10px 15px;
+}
+
+.detailsButton {
+    background: #6c757d;
+}
+
+.testButton {
+    background: #28a745;
+}
+
+.editButton {
+    background: #ffc107;
+}
+
+.deleteButton {
+    background: #dc3545;
+}
+
+.provisionButton {
+    background: #17a2b8;
+}
+
+.provisionButtonDisabled {
+    background: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.linkButton { background-color: #f06311; } /* Verde */
+
+/* Estilos do Modal de Script (mantidos para consistência, caso queira modularizar também) */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 700px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modalTextarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 300px;
+    font-family: monospace;
+    font-size: 12px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}

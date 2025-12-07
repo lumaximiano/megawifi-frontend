@@ -1,0 +1,145 @@
+/* frontend/source/portals/account/css/ManageLocationsPage.module.css */
+
+.container {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.formContainer {
+  background-color: #fdfdfd;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid #eee;
+}
+
+/* Estilos para o formulário em si */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.inputGroup input {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.submitButton {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #218838;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mensagens de sucesso e erro */
+.successMessage {
+  color: #28a745;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.errorMessage {
+  color: #dc3545;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Estilos para a tabela de clientes */
+.clientsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.clientsTable th,
+.clientsTable td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.clientsTable th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: #333;
+}
+
+.clientsTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+.actionButton {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.deleteButton {
+  background-color: #dc3545;
+}
+
+.actionButton:hover {
+  opacity: 0.85;
+}
+
+/* Adicionando a classe que faltava no CSS anterior */
+.statusActive {
+    background-color: #d4efdf;
+    color: #1e8449;
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
