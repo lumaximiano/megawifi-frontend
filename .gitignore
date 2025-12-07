@@ -1,0 +1,16 @@
+# Dependências
+node_modules
+
+# Arquivos de Build
+dist
+build
+
+# Arquivos de Ambiente
+.env
+.env.*
+.env.local
+!.env.example
+
+# Logs
+logs/
+*.log
