@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 1. Lê a URL da API da variável de ambiente.
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 // 2. Interceptor para adicionar o token de autenticação em todas as requisições.
