@@ -1,14 +1,12 @@
-// frontend/source/portals/master/components/AccountForm.jsx
+// frontend/source/components/form/RegisterForm.jsx - VERSÃO FINAL PADRONIZADA (SEM GAMBIARRAS)
 
 import React, { useState, useEffect } from 'react';
-import styles from '@styles/form/RegisterForm.module.css';
+import styles from "./RegisterForm.module.css"; 
 import axios from 'axios';
 import InputMask from 'react-input-mask';
 
-// MUDANÇA 1: Adicionada a nova prop 'onCancel'
-const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, isSubmitting = false, serverError = '' }) => {
+const RegisterForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, isSubmitting = false, serverError = '' }) => {
     
-    // Estados do formulário
     const [accountType, setAccountType] = useState('PJ');
     const [name, setName] = useState('');
     const [cpf, setCpf] = useState('');
@@ -20,7 +18,7 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
     const [ownerPhone, setOwnerPhone] = useState('');
     const [password, setPassword] = useState('');
     const [cep, setCep] = useState('');
-    const [address, setAddress] = useState('');
+    const [street, setStreet] = useState(''); // MUDANÇA: 'address' virou 'street' para clareza
     const [number, setNumber] = useState('');
     const [complement, setComplement] = useState('');
     const [neighborhood, setNeighborhood] = useState('');
@@ -29,30 +27,33 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
     const [isCepLoading, setIsCepLoading] = useState(false);
     const [internalError, setInternalError] = useState('');
 
+    // useEffect SIMPLIFICADO E PADRONIZADO: Ele espera um formato de dados único e limpo.
     useEffect(() => {
+        // Zera os campos para garantir que não haja "vazamento" de dados entre usos do formulário
+        setAccountType('PJ'); setName(''); setCpf(''); setLegalName(''); setFantasyName(''); setCnpj('');
+        setOwnerName(''); setOwnerEmail(''); setOwnerPhone(''); setPassword('');
+        setCep(''); setStreet(''); setNumber(''); setComplement(''); setNeighborhood(''); setCity(''); setState('');
+
         if (initialData && Object.keys(initialData).length > 0) {
-            setAccountType(initialData.type || 'PJ');
-            if (initialData.type === 'PF') {
-                setName(initialData.name || '');
-                setCpf(initialData.document || '');
-            } else {
-                setLegalName(initialData.name || '');
-                setFantasyName(initialData.fantasyName || '');
-                setCnpj(initialData.document || '');
-            }
-            setOwnerName(initialData.owner?.name || '');
-            setOwnerEmail(initialData.owner?.email || '');
-            setOwnerPhone(initialData.owner?.phone || '');
-            setCep(initialData.address?.cep || '');
-            setAddress(initialData.address?.street || '');
-            setNumber(initialData.address?.number || '');
-            setComplement(initialData.address?.complement || '');
-            setNeighborhood(initialData.address?.neighborhood || '');
-            setCity(initialData.address?.city || '');
-            setState(initialData.address?.state || '');
+            setAccountType(initialData.accountType || 'PJ');
+            setName(initialData.name || '');
+            setCpf(initialData.cpf || '');
+            setLegalName(initialData.legalName || '');
+            setFantasyName(initialData.fantasyName || '');
+            setCnpj(initialData.cnpj || '');
+            setOwnerName(initialData.ownerName || '');
+            setOwnerEmail(initialData.ownerEmail || '');
+            setOwnerPhone(initialData.ownerPhone || '');
+            setCep(initialData.cep || '');
+            setStreet(initialData.street || '');
+            setNumber(initialData.number || '');
+            setComplement(initialData.complement || '');
+            setNeighborhood(initialData.neighborhood || '');
+            setCity(initialData.city || '');
+            setState(initialData.state || '');
         }
     }, [initialData]);
-
+    
     const generatePassword = () => {
         const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
         let pass = "";
@@ -68,11 +69,11 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
         setIsCepLoading(true);
         setInternalError('');
         try {
-            const response = await axios.get(`https://viacep.com.br/ws/${currentCep}/json/`   );
+            const response = await axios.get(`https://viacep.com.br/ws/${currentCep}/json/` );
             if (response.data.erro) {
                 setInternalError('CEP não encontrado.');
             } else {
-                setAddress(response.data.logradouro);
+                setStreet(response.data.logradouro); // MUDANÇA: Preenche 'street'
                 setNeighborhood(response.data.bairro);
                 setCity(response.data.localidade);
                 setState(response.data.uf);
@@ -87,29 +88,22 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
     const localHandleSubmit = (e) => {
         e.preventDefault();
         setInternalError('');
-        if (!isEditing && !password) {
-            setInternalError('A senha é obrigatória para novas contas.');
-            return;
-        }
-        const payload = {
-            type: accountType,
-            name: accountType === 'PF' ? name : legalName,
-            document: accountType === 'PF' ? cpf.replace(/\D/g, '') : cnpj.replace(/\D/g, ''),
-            fantasyName: accountType === 'PJ' ? fantasyName : null,
-            owner: {
-                name: ownerName,
-                email: ownerEmail,
-                phone: ownerPhone.replace(/\D/g, ''),
-                password: password,
-            },
-            address: { cep: cep.replace(/\D/g, ''), street: address, number, complement, neighborhood, city, state },
+
+        const formData = {
+            accountType, name, legalName, fantasyName, ownerName, ownerEmail,
+            cpf: cpf.replace(/\D/g, ''),
+            cnpj: cnpj.replace(/\D/g, ''),
+            ownerPhone: ownerPhone.replace(/\D/g, ''),
+            password,
+            cep: cep.replace(/\D/g, ''),
+            street, number, complement, neighborhood, city, state,
         };
-        onSubmit(payload);
+        
+        onSubmit(formData);
     };
 
     return (
         <form onSubmit={localHandleSubmit} className={styles.form}>
-            {/* ... todos os seus fieldsets permanecem iguais ... */}
             <fieldset className={styles.fieldset}>
                 <legend>Tipo de Conta</legend>
                 <div className={styles.radioGroup}>
@@ -133,7 +127,7 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
                     </div>
                 )}
             </fieldset>
-
+            
             <fieldset className={styles.fieldset}>
                 <legend>Responsável pela Conta e Acesso</legend>
                 <div className={styles.formRow}>
@@ -166,7 +160,7 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
                 <legend>Endereço Principal</legend>
                 <div className={styles.formRow}>
                     <div className={styles.formGroup} style={{ flex: 1 }}><label>CEP</label><InputMask mask="99999-999" value={cep} onChange={(e) => setCep(e.target.value)} onBlur={handleCepBlur} required>{(inputProps) => <input {...inputProps} type="text" />}</InputMask>{isCepLoading && <small>Buscando...</small>}</div>
-                    <div className={styles.formGroup} style={{ flex: 3 }}><label>Rua</label><input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required /></div>
+                    <div className={styles.formGroup} style={{ flex: 3 }}><label>Rua</label><input type="text" value={street} onChange={(e) => setStreet(e.target.value)} required /></div>
                     <div className={styles.formGroup} style={{ flex: 0.5 }}><label>Nº</label><input type="text" value={number} onChange={(e) => setNumber(e.target.value)} required /></div>
                 </div>
                 <div className={styles.formRow}>
@@ -176,23 +170,21 @@ const AccountForm = ({ initialData = {}, onSubmit, onCancel, isEditing = false, 
                     <div className={styles.formGroup} style={{ flex: 0.5 }}><label>UF</label><input type="text" maxLength="2" value={state} onChange={(e) => setState(e.target.value)} required /></div>
                 </div>
             </fieldset>
-            
+
             {(internalError || serverError) && <p className={styles.error}>{internalError || serverError}</p>}
 
-            {/* MUDANÇA 2: O grupo de botões agora inclui o botão de Cancelar */}
             <div className={styles.buttonGroup}>
-                {/* O botão Cancelar só é renderizado se a função onCancel for passada */}
                 {onCancel && (
                     <button type="button" className={styles.cancelButton} onClick={onCancel} disabled={isSubmitting}>
                         Cancelar
                     </button>
                 )}
                 <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
-                    {isSubmitting ? 'Salvando...' : (isEditing ? 'Salvar Alterações' : 'Salvar Conta')}
+                    {isSubmitting ? 'Salvando...' : (isEditing ? 'Salvar Alterações' : 'Salvar')}
                 </button>
             </div>
         </form>
     );
 };
 
-export default AccountForm;
+export default RegisterForm;

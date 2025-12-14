@@ -1,29 +1,33 @@
-// frontend/src/components/StatCard.jsx
-
 import React from 'react';
-import styles from '../../../styles/StatCard.module.css'; // Importa seu próprio CSS dedicado
 
 const StatCard = ({ title, mainValue, details, icon, onClick }) => {
-    // Adiciona a classe 'clickable' apenas se a função onClick for fornecida
-    const cardClassName = `${styles.statCard} ${onClick ? styles.clickable : ''}`;
-    
+    const isClickable = !!onClick;
+
+    const cardClasses = `
+        bg-white rounded-lg shadow-md p-5 flex items-start gap-4
+        ${isClickable ? 'cursor-pointer hover:bg-gray-50 hover:shadow-lg transition-all duration-200' : ''}
+    `;
+
     return (
-        <div className={cardClassName} onClick={onClick}>
-            <div className={styles.cardIcon}>{icon}</div>
-            <div className={styles.cardContent}>
-                <p className={styles.cardTitle}>{title}</p>
+        <div className={cardClasses} onClick={onClick}>
+            {icon && (
+                <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg">
+                    {icon}
+                </div>
+            )}
+            <div className="flex-1">
+                <p className="text-sm font-medium text-gray-500 truncate">{title}</p>
                 
-                {/* Lógica para renderizar o valor principal de forma segura */}
-                <div className={styles.cardValueContainer}>
-                    {/* Se mainValue for um objeto (JSX), renderiza. Se for string/número, envolve em um <p> */}
-                    {typeof mainValue === 'object' ? mainValue : <p className={styles.cardValue}>{mainValue}</p>}
+                <div className="mt-1">
+                    {typeof mainValue === 'object' ? mainValue : <p className="text-2xl font-semibold text-gray-900">{mainValue}</p>}
                 </div>
 
-                {/* Renderiza os detalhes apenas se o array existir e não estiver vazio */}
                 {details && details.length > 0 && (
-                    <div className={styles.cardDetails}>
+                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
                         {details.map(detail => (
-                            <span key={detail.label}>{detail.label}: <strong>{detail.value}</strong></span>
+                            <span key={detail.label}>
+                                {detail.label}: <strong className="font-medium text-gray-700">{detail.value}</strong>
+                            </span>
                         ))}
                     </div>
                 )}

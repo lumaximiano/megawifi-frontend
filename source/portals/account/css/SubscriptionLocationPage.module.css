@@ -1,0 +1,152 @@
+/* frontend/source/portals/account/css/SubscriptionLocationPage.module.css */
+
+/* ================================================================== */
+/* === ESTILOS GERAIS (QUE ERAM DO ListPage.module.css) === */
+/* ================================================================== */
+
+.listPageContainer {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #64748b;
+    margin: 0.25rem 0 0 0;
+}
+
+.addButton {
+    background-color: #3182ce; /* Cor do seu ListPage */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.addButton:hover {
+    background-color: #2b6cb0;
+}
+
+.content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTILOS DA TABELA --- */
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content th, .content td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+.content th {
+    background-color: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.content tr:hover {
+    background-color: #f7fafc;
+}
+
+/* --- AÇÕES E BOTÕES --- */
+.actionsHeader {
+    text-align: right !important;
+}
+
+.actionsCell {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.editButton, .deleteButton {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.1s;
+}
+.editButton:hover, .deleteButton:hover {
+    transform: scale(1.05);
+}
+
+.editButton { background-color: #ecc94b; color: #1a202c; }
+.deleteButton { background-color: #f56565; color: white; }
+
+
+/* ================================================================== */
+/* === ESTILOS ESPECÍFICOS DESTA PÁGINA === */
+/* ================================================================== */
+
+.popularPlan {
+  background-color: #f0fff4; /* Verde claro */
+  border-left: 4px solid #38a169; /* Borda verde */
+}
+
+.planNameCell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.priceCell {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2f855a; /* Verde escuro para o preço */
+}
+
+.popularTag {
+  display: inline-block;
+  margin-left: 0.75rem;
+  background-color: #38a169;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #4a5568;
+}
+
+.featureList li {
+  margin-bottom: 0.25rem;
+}
+
+.featureList li:last-child {
+  margin-bottom: 0;
+}

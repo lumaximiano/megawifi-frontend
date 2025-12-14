@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from '@styles/FormPage.module.css';
 import api from '@api/axiosConfig';
-import AccountForm from '@components/AccountForm';
+import RegisterForm from '@global-components/form/RegisterForm';
+import styles from '@global-components/form/RegisterForm.module.css';
 
 const EditAccountPage = () => {
     const navigate = useNavigate();
@@ -56,7 +56,7 @@ const EditAccountPage = () => {
             {!isLoading && error && <p className={styles.error}>{error}</p>}
             
             {!isLoading && initialData && (
-                 <AccountForm
+                 <RegisterForm
                     onSubmit={handleEditSubmit}
                     // MUDANÇA 1: Passando a função de cancelamento para o formulário
                     onCancel={() => navigate('/admin/accounts')}

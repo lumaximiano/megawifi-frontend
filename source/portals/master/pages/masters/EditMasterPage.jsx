@@ -1,8 +1,10 @@
+// frontend/source/portals/master/pages/users/EditMasterPage.jsx - VERSÃO CORRIGIDA
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from '@styles/FormPage.module.css';
+import MasterForm from '@global-components/form/MasterForm';
 import api from '@api/axiosConfig';
-import UserForm from './UserForm'; // Importando o formulário de usuário
+import { FaSpinner } from 'react-icons/fa';
 
 const EditMasterPage = () => {
     const navigate = useNavigate();
@@ -22,8 +24,8 @@ const EditMasterPage = () => {
                 setInitialData(response.data);
                 setError('');
             } catch (err) {
-                setError('Falha ao carregar os dados do Master.');
-                console.error("Erro ao buscar dados do Master:", err);
+                setError('Falha ao carregar os dados do usuário. Verifique se o usuário existe e tente novamente.');
+                console.error("Erro ao buscar dados do usuário:", err);
                 setInitialData(null);
             } finally {
                 setIsLoading(false);
@@ -38,26 +40,41 @@ const EditMasterPage = () => {
         setIsSubmitting(true);
         try {
             await api.put(`/api/users/${id}`, payload);
-            alert('Master atualizado com sucesso!');
-            navigate('/admin/masters');
+            // Navega para a página de gerenciamento com uma mensagem de sucesso
+            navigate('/admin/masters', { state: { message: 'Usuário atualizado com sucesso!' } });
         } catch (err) {
-            const errorMessage = err.response?.data?.message || 'Ocorreu um erro ao atualizar o Master.';
+            const errorMessage = err.response?.data?.message || 'Ocorreu um erro ao atualizar o usuário.';
             setError(errorMessage);
         } finally {
             setIsSubmitting(false);
         }
     };
-    
-    return (
-        <div className={styles.formContainer}>
-            <h1 className={styles.title}>Editar Master</h1>
-            <p className={styles.subtitle}>Altere os dados do usuário abaixo.</p>
 
-            {isLoading && <p>Carregando dados...</p>}
-            {!isLoading && error && <p className={styles.error}>{error}</p>}
+    // Layout da página
+    return (
+        <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
+            {isLoading && (
+                <div className="flex justify-center items-center h-64">
+                    <FaSpinner className="animate-spin text-4xl text-gray-500" />
+                    <p className="ml-4 text-gray-600">Carregando dados do usuário...</p>
+                </div>
+            )}
+
+            {!isLoading && error && !initialData && (
+                 <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow text-center">
+                    <h2 className="text-xl font-bold text-red-700">Erro ao Carregar</h2>
+                    <p className="mt-2 text-gray-600">{error}</p>
+                    <button
+                        onClick={() => navigate('/admin/masters')}
+                        className="mt-6 py-2 px-5 border-none rounded-md text-base font-semibold cursor-pointer transition-all duration-250 bg-blue-600 text-white hover:bg-blue-700"
+                    >
+                        Voltar para a Lista
+                    </button>
+                </div>
+            )}
             
             {!isLoading && initialData && (
-                 <UserForm
+                <MasterForm
                     onSubmit={handleEditSubmit}
                     onCancel={() => navigate('/admin/masters')}
                     initialData={initialData}

@@ -1,5 +1,3 @@
-/* frontend/src/components/MasterLayout.module.css - ATUALIZADO COM PAINEL DE SESSÃO */
-
 .masterLayout {
     display: flex;
     height: 100vh;
@@ -12,7 +10,7 @@
     color: #e2e8f0;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 0; /* Removido padding lateral para controle total */
+    padding: 1.5rem 0;
 }
 
 .logo {
@@ -30,15 +28,15 @@
     color: #a0aec0;
     margin-bottom: 2rem;
     border-bottom: 1px solid #4a5568;
-    padding: 0 1rem 1rem 1rem; /* Adicionado padding aqui */
+    padding: 0 1rem 1rem 1rem;
 }
 
 .nav {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 0 1rem; /* Adicionado padding aqui */
-    flex-grow: 1; /* Faz a navegação ocupar o espaço disponível, empurrando o footer para baixo */
+    padding: 0 1rem;
+    flex-grow: 1; 
 }
 
 .navLink {
@@ -145,8 +143,27 @@
 /* --- FIM DOS NOVOS ESTILOS --- */
 
 .footer {
-    margin-top: auto; /* Garante que o footer fique na base */
-    padding: 1rem 1rem 0 1rem; /* Adiciona padding e espaço acima */
+    margin-top: auto;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid #34495e;
+}
+
+.userInfo span {
+    font-weight: 600;
+    color: #fff;
+}
+
+.userInfo small {
+    font-size: 0.8rem;
+    color: #bdc3c7;
 }
 
 .logoutButton {

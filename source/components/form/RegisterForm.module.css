@@ -1,12 +1,10 @@
-/* frontend/source/styles/FormPage.module.css */
-
 .formContainer {
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 900px;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .title {
@@ -182,14 +180,9 @@
 }
 
 
-/* ================================================== */
-/* ESTILOS PARA PERMISSÕES (Layout de Abas e Grade)   */
-/* ================================================== */
-
-/* --- Layout de Abas (Tabs) --- */
 .tabNav {
     display: flex;
-    flex-wrap: wrap; /* Permite que as abas quebrem a linha em telas menores */
+    flex-wrap: wrap; 
     border-bottom: 2px solid #dee2e6;
     margin-bottom: 25px;
 }
@@ -202,7 +195,7 @@
     font-size: 0.95rem;
     color: #495057;
     border-bottom: 2px solid transparent;
-    margin-bottom: -2px; /* Alinha o botão com a borda principal */
+    margin-bottom: -2px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -219,12 +212,8 @@
 
 .tabContent {
     padding: 10px 5px;
-    min-height: 200px; /* Garante uma altura mínima para o conteúdo da aba */
+    min-height: 200px; 
 }
-
-
-/* --- Layout de Grade (Grid) e Componentes Internos --- */
-/* (Estes estilos são usados por ambos os modelos) */
 
 .permissionsGrid {
     display: grid;

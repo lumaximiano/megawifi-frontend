@@ -1,42 +1,5 @@
-// lmx-megawifi/frontend/src/components/RouterStatsPanel.jsx - v3.0 (Refatorado) - COMPONENTE PASSIVO
 import React from 'react';
-
-// Estilos e funções de formatação são mantidos, pois são lógicos e passivos.
-const styles = {
-    panel: {
-        marginTop: '20px',
-        padding: '20px',
-        background: '#f8f9fa',
-        border: '1px solid #dee2e6',
-        borderRadius: '8px',
-    },
-    title: {
-        margin: '0 0 15px 0',
-        borderBottom: '1px solid #ccc',
-        paddingBottom: '10px',
-    },
-    grid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '15px',
-    },
-    statItem: {
-        background: 'white',
-        padding: '15px',
-        borderRadius: '5px',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-    },
-    statLabel: {
-        fontWeight: 'bold',
-        display: 'block',
-        marginBottom: '5px',
-        color: '#495057',
-    },
-    statValue: {
-        fontSize: '1.1em',
-        color: '#212529',
-    }
-};
+import { HiOutlineClock, HiOutlineExclamationCircle, HiOutlineChip, HiOutlineGlobe, HiOutlineCalendar, HiOutlineTrendingUp } from 'react-icons/hi';
 
 const formatBytes = (bytes) => {
     if (!bytes || bytes === 0) return '0 Bytes';
@@ -49,89 +12,75 @@ const formatBytes = (bytes) => {
 const formatUptime = (uptimeStr) => {
     if (!uptimeStr) return 'N/A';
     let days = 0, hours = 0, minutes = 0;
-    
-    if (uptimeStr.includes('w')) {
-        const parts = uptimeStr.split('w');
-        days += parseInt(parts[0]) * 7;
-        uptimeStr = parts[1] || '';
-    }
-    if (uptimeStr.includes('d')) {
-        const parts = uptimeStr.split('d');
-        days += parseInt(parts[0]);
-        uptimeStr = parts[1] || '';
-    }
-    if (uptimeStr.includes('h')) {
-        const parts = uptimeStr.split('h');
-        hours = parseInt(parts[0]);
-        uptimeStr = parts[1] || '';
-    }
-    if (uptimeStr.includes('m')) {
-        const parts = uptimeStr.split('m');
-        minutes = parseInt(parts[0]);
-    }
-
+    if (uptimeStr.includes('w')) { const parts = uptimeStr.split('w'); days += parseInt(parts[0]) * 7; uptimeStr = parts[1] || ''; }
+    if (uptimeStr.includes('d')) { const parts = uptimeStr.split('d'); days += parseInt(parts[0]); uptimeStr = parts[1] || ''; }
+    if (uptimeStr.includes('h')) { const parts = uptimeStr.split('h'); hours = parseInt(parts[0]); uptimeStr = parts[1] || ''; }
+    if (uptimeStr.includes('m')) { const parts = uptimeStr.split('m'); minutes = parseInt(parts[0]); }
     let result = '';
     if (days > 0) result += `${days}d `;
     if (hours > 0) result += `${hours}h `;
     if (minutes > 0) result += `${minutes}m`;
-    
-    return result.trim() || 'Menos de um minuto';
+    return result.trim() || 'Menos de 1m';
 };
 
-// O componente agora é "burro". Ele apenas recebe os dados e os exibe.
-// A lógica de useState, useEffect e axios foi REMOVIDA.
+const StatCard = ({ icon, label, value, children }) => (
+    <div className="bg-white p-4 rounded-lg shadow flex items-start gap-4">
+        <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-lg">
+            {icon}
+        </div>
+        <div>
+            <dt className="text-sm font-medium text-gray-500 truncate">{label}</dt>
+            <dd className="mt-1 text-2xl font-semibold text-gray-900">{value}</dd>
+            {children}
+        </div>
+    </div>
+);
+
 const RouterStatsPanel = ({ router, stats, error, loading }) => {
-    
-    // A mensagem de "Carregando" agora é controlada pela página pai.
+    if (!router) return null;
+
     if (loading) {
         return (
-            <div style={styles.panel}>
-                <h3 style={styles.title}>Detalhes de: {router.name}</h3>
-                <p>Carregando estatísticas...</p>
+            <div className="mt-8 bg-gray-50 p-6 rounded-lg shadow-inner text-center text-gray-500">
+                <HiOutlineClock className="h-6 w-6 mx-auto animate-spin mb-2" />
+                Carregando estatísticas de <strong>{router.name}</strong>...
             </div>
         );
     }
 
-    // A mensagem de erro também é controlada pela página pai.
     if (error) {
         return (
-            <div style={styles.panel}>
-                <h3 style={styles.title}>Detalhes de: {router.name}</h3>
-                <p style={{ color: 'red' }}>{error}</p>
+            <div className="mt-8 bg-red-50 p-6 rounded-lg shadow-inner text-center text-red-600">
+                <HiOutlineExclamationCircle className="h-8 w-8 mx-auto mb-2" />
+                <p className="font-semibold">{error}</p>
             </div>
         );
     }
-    
-    // Se não há dados, não mostra nada para evitar um painel vazio.
+
     if (!stats) {
         return null;
     }
 
+    const totalMemory = parseFloat(stats.totalMemory);
+    const freeMemory = parseFloat(stats.freeMemory);
+    const usedMemory = totalMemory - freeMemory;
+    const memoryUsagePercentage = totalMemory > 0 ? (usedMemory / totalMemory) * 100 : 0;
+
     return (
-        <div style={styles.panel}>
-            <h3 style={styles.title}>Detalhes de: {router.name}</h3>
-            <div style={styles.grid}>
-                <div style={styles.statItem}>
-                    <span style={styles.statLabel}>Hora</span>
-                    <span style={styles.statValue}>{stats.time ? stats.time.substring(0, 5) : 'N/A'}</span>
-                </div>
-                <div style={styles.statItem}>
-                    <span style={styles.statLabel}>Data</span>
-                    <span style={styles.statValue}>{stats.date}</span>
-                </div>
-                <div style={styles.statItem}>
-                    <span style={styles.statLabel}>Uptime</span>
-                    <span style={styles.statValue}>{formatUptime(stats.uptime)}</span>
-                </div>
-                <div style={styles.statItem}>
-                    <span style={styles.statLabel}>Uso de CPU</span>
-                    <span style={styles.statValue}>{stats.cpuLoad}%</span>
-                </div>
-                <div style={styles.statItem}>
-                    <span style={styles.statLabel}>Memória Livre</span>
-                    <span style={styles.statValue}>{formatBytes(stats.freeMemory)} / {formatBytes(stats.totalMemory)}</span>
-                </div>
-            </div>
+        <div className="mt-8">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Detalhes de: {router.name}</h3>
+            <dl className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <StatCard icon={<HiOutlineGlobe className="h-6 w-6" />} label="Uptime" value={formatUptime(stats.uptime)} />
+                <StatCard icon={<HiOutlineChip className="h-6 w-6" />} label="Uso de CPU" value={`${stats.cpuLoad}%`} />
+                <StatCard icon={<HiOutlineTrendingUp className="h-6 w-6" />} label="Memória Utilizada">
+                    <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                        <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${memoryUsagePercentage}%` }}></div>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{formatBytes(usedMemory)} de {formatBytes(totalMemory)}</p>
+                </StatCard>
+                <StatCard icon={<HiOutlineCalendar className="h-6 w-6" />} label="Data no Roteador" value={stats.date} />
+                <StatCard icon={<HiOutlineClock className="h-6 w-6" />} label="Hora no Roteador" value={stats.time ? stats.time.substring(0, 5) : 'N/A'} />
+            </dl>
         </div>
     );
 };

@@ -27,7 +27,7 @@ const MasterLayout = () => {
             return null;
         }
         const roles = userObject.roles.map(r => r.role.name);
-        
+
         if (roles.includes('MASTER')) return 'MASTER';
         if (roles.includes('ADMIN')) return 'ADMIN';
         if (roles.includes('ACCOUNT_OWNER')) return 'ACCOUNT_OWNER';
@@ -41,7 +41,7 @@ const MasterLayout = () => {
             const parsedUser = JSON.parse(storedUser);
             setUser(parsedUser);
             setUserPrimaryRole(getUserPrimaryRole(parsedUser));
-            
+
             // Extrai e define as permissões do usuário logado
             // Se o usuário não tiver permissões (usuário antigo), define um objeto vazio para não quebrar o layout
             setPermissions(parsedUser.permissions || {});
@@ -68,42 +68,32 @@ const MasterLayout = () => {
         <div className={styles.masterLayout}>
             <aside className={styles.sidebar}>
                 <h1 className={styles.logo}>MEGAWIFI</h1>
-                <p className={styles.panelTitle}>Painel Master</p>
 
                 <nav className={styles.nav}>
                     {/* Adicionada a verificação de permissão para cada NavLink */}
                     {permissions.dashboard?.view && <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineChartPie className={styles.icon} /><span>Dashboard</span></NavLink>}
-                    
+
                     {/* A lógica 'isMaster' é mantida como uma camada extra de segurança, mas a permissão é a chave */}
                     {isMaster && permissions.masters?.view && <NavLink to="/admin/masters" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineKey className={styles.icon} /><span>Masters</span></NavLink>}
-                    
+
                     {permissions.accounts?.view && <NavLink to="/admin/accounts" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineUsers className={styles.icon} /><span>Contas</span></NavLink>}
                     {permissions.plans?.view && <NavLink to="/admin/planos" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineCollection className={styles.icon} /><span>Planos</span></NavLink>}
-                    
+
                     {isMaster && permissions.finance?.view && <NavLink to="/admin/financeiro" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineCash className={styles.icon} /><span>Financeiro</span></NavLink>}
-                    
+
                     {permissions.server?.view && <NavLink to="/admin/servidor" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineServer className={styles.icon} /><span>Servidor</span></NavLink>}
                     {permissions.integrations?.view && <NavLink to="/admin/integracao" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlinePuzzle className={styles.icon} /><span>Integração</span></NavLink>}
-                    
+
                     {/* Para a Configuração, podemos assumir que se o usuário pode ver qualquer outra coisa, ele pode ver as configurações */}
                     {/* Ou podemos adicionar ao nosso formulário de permissões, o que é o ideal. Vamos assumir que foi adicionado. */}
                     {permissions.settings?.view && <NavLink to="/admin/configuracao" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}><HiOutlineCog className={styles.icon} /><span>Configuração</span></NavLink>}
                 </nav>
 
-                <div className={styles.sessionPanel}>
-                    <ul className={styles.sessionDetails}>
-                        <li>
-                            <span className={styles.sessionLabel}>Usuário:</span>
-                            <span className={styles.sessionValue}>{user.name}</span>
-                        </li>
-                        <li>
-                            <span className={styles.sessionLabel}>Role:</span>
-                            <span className={styles.sessionValue}>{userPrimaryRole}</span>
-                        </li>
-                    </ul>
-                </div>
-
                 <div className={styles.footer}>
+                    <div className={styles.userInfo}>
+                        <span>{user?.name || 'Usuário'}</span>
+                        <small>{user?.email || ''}</small>
+                    </div>
                     <button onClick={handleLogout} className={styles.logoutButton}>
                         <HiOutlineLogout className={styles.icon} />
                         <span>Sair</span>

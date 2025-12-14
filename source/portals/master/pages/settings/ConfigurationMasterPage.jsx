@@ -1,7 +1,7 @@
 // frontend/src/pages/ConfigurationMasterPage.jsx - v2 - SEÇÃO DE PLANOS REMOVIDA
 
 import React from 'react';
-import styles from '@css/ConfigurationMasterPage.module.css'; // CSS específico
+import styles from "../../css/ConfigurationMasterPage.module.css";
 
 const ConfigurationMasterPage = () => {
     return (

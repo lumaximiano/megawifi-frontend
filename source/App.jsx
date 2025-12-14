@@ -7,9 +7,8 @@ import LoginPage from './pages/LoginPage';
 import MasterLayout from './components/layout/MasterLayout';
 import DashboardMasterPage from './portals/master/pages/dashboard/DashboardMasterPage';
 import ManageMastersPage from './portals/master/pages/masters/ManageMastersPage';
-// import UserForm from './portals/master/pages/masters/UserForm'; // Esta importação pode ser removida se UserForm for usado apenas por Add/Edit
-import AddMasterPage from './portals/master/pages/masters/AddMasterPage'; // Assumindo que renomearemos UserForm para AddMasterPage
-import EditMasterPage from './portals/master/pages/masters/EditMasterPage'; // 1. IMPORTAR A NOVA PÁGINA DE EDIÇÃO
+import AddMasterPage from './portals/master/pages/masters/AddMasterPage';
+import EditMasterPage from './portals/master/pages/masters/EditMasterPage';
 import ManageAccountsPage from './portals/master/pages/accounts/ManageAccountsPage';
 import EditAccountPage from './portals/master/pages/accounts/EditAccountPage';
 import AddAccountPage from './portals/master/pages/accounts/AddAccountPage';
@@ -21,13 +20,23 @@ import ConfigurationMasterPage from './portals/master/pages/settings/Configurati
 
 // --- PÁGINAS DA CONTA (ACCOUNT) ---
 import AccountLayout from './components/layout/AccountLayout';
-import DashboardAccountPage from './portals/account/pages/DashboardPage';
-import ManageLocationsPage from './portals/account/pages/ManageLocationsPage';
-import AddLocationPage from './portals/account/pages/AddLocationPage';
-import RoutersPage from './portals/account/pages/RoutersPage';
-import PlansPage from './portals/account/pages/PlansPage';
-import HotspotPage from './portals/account/pages/HotspotPage';
-import IntegrationsPage from './portals/account/pages/IntegrationsPage';
+import DashboardAccountPage from './portals/account/pages/dashboard/DashboardPage';
+import ManageLocationsPage from './portals/account/pages/location/ManageLocationsPage';
+import AddLocationPage from './portals/account/pages/location/AddLocationPage';
+import RoutersPage from './portals/account/pages/mikrotik/RoutersPage';
+import SubscriptionLocationPage from './portals/account/pages/plans/SubscriptionLocationPage';
+import PlansPage from './portals/account/pages/hotspot/PlansPage';
+import HotspotPage from './portals/account/pages/hotspot/HotspotPage';
+import SessionsPage from './portals/account/pages/sessions/SessionsPage';
+import IntegrationsPage from './portals/account/pages/integrations/IntegrationsPage';
+import ConfigurationAccountPage from './portals/account/pages/settings/ConfigurationAccountPage';
+import EditLocationPage from './portals/account/pages/location/EditLocationPage';
+
+
+
+
+
+
 const PlaceholderPage = ({ title }) => <div>{title} (em construção)</div>;
 
 
@@ -123,9 +132,7 @@ const AppRoutes = () => {
                 <Route index element={<Navigate to="dashboard" replace />} />
                 <Route path="dashboard" element={<DashboardMasterPage />} />
                 {userPrimaryRole === 'MASTER' && <Route path="masters" element={<ManageMastersPage />} />}
-                {/* A rota 'new' agora aponta para a página de Adicionar Master */}
                 {userPrimaryRole === 'MASTER' && <Route path="masters/new" element={<AddMasterPage />} />} 
-                {/* 2. ADICIONAR A NOVA ROTA DE EDIÇÃO */}
                 {userPrimaryRole === 'MASTER' && <Route path="masters/edit/:id" element={<EditMasterPage />} />}
                 
                 <Route path="accounts" element={<ManageAccountsPage />} />
@@ -146,12 +153,13 @@ const AppRoutes = () => {
                 <Route path="dashboard" element={<DashboardAccountPage />} />
                 <Route path="locations" element={<ManageLocationsPage />} />
                 <Route path="locations/new" element={<AddLocationPage />} />
+                <Route path="location/edit/:id" element={<EditLocationPage />} />
                 <Route path="mikrotik" element={<RoutersPage />} />
-                <Route path="planos" element={<PlansPage />} />
+                <Route path="planos" element={<SubscriptionLocationPage />} />
                 <Route path="hotspot" element={<HotspotPage />} />
                 <Route path="integracoes" element={<IntegrationsPage />} />
-                <Route path="sessoes" element={<PlaceholderPage title="Sessões" />} />
-                <Route path="configuracoes" element={<PlaceholderPage title="Configurações" />} />
+                <Route path="sessoes" element={<SessionsPage />} />
+                <Route path="configuracoes" element={<ConfigurationAccountPage />} />
               </Route>
             )}
           </>

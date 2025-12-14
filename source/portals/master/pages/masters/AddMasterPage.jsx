@@ -1,48 +1,45 @@
+// frontend/source/portals/master/pages/users/AddMasterPage.jsx - VERSÃO CORRIGIDA
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '@styles/FormPage.module.css';
 import api from '@api/axiosConfig';
-import UserForm from './UserForm'; // Importando o formulário reutilizável
+import MasterForm from '@global-components/form/MasterForm'; 
 
 const AddMasterPage = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleCreateSubmit = async (payload) => {
         setError('');
-        setSuccess('');
         setIsSubmitting(true);
 
-        // Adiciona a role 'MASTER' que é específica para a criação
+        // Adiciona a role 'MASTER' ao payload antes de enviar
         const finalPayload = { ...payload, role: 'MASTER' };
 
         try {
-            await api.post('/api/users', finalPayload);
-            setSuccess('Master cadastrado com sucesso! Redirecionando...');
-            setTimeout(() => navigate('/admin/masters', { state: { refresh: true } }), 2000);
+            await api.post('/api/users', finalPayload); 
+            
+            // Navega para a página de gerenciamento com uma mensagem de sucesso
+            navigate('/admin/masters', { state: { message: 'Usuário Master cadastrado com sucesso!' } });
+
         } catch (err) {
-            const errorMessage = err.response?.data?.message || 'Ocorreu um erro ao cadastrar o Master.';
+            const errorMessage = err.response?.data?.message || 'Ocorreu um erro ao cadastrar o usuário.';
             setError(errorMessage);
         } finally {
             setIsSubmitting(false);
         }
     };
 
+    // O layout da página agora é apenas um contêiner. O MasterForm já tem seu próprio estilo.
     return (
-        <div className={styles.formContainer}>
-            <h1 className={styles.title}>Cadastrar Novo Master</h1>
-            <p className={styles.subtitle}>Preencha os dados do novo usuário Master.</p>
-            
-            {success && <p className={styles.success}>{success}</p>}
-
-            <UserForm
+        <div className="p-4 md:p-8 bg-gray-50 min-h-screen">
+            <MasterForm
                 onSubmit={handleCreateSubmit}
                 onCancel={() => navigate('/admin/masters')}
                 isSubmitting={isSubmitting}
                 serverError={error}
-                isEditing={false} // Define que estamos no modo de criação
+                isEditing={false} // Garante que o formulário está em modo de criação
             />
         </div>
     );

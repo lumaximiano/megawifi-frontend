@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../../styles/FormPage.module.css'; // O CSS é genérico, pode ser mantido
+import styles from '@components/form/RegisterForm.module.css';
 import axios from 'axios';
-import api from '../../../api/axiosConfig';
+import api from '@api/axiosConfig';
 import InputMask from 'react-input-mask';
 
 // MUDANÇA 1: Nome do componente atualizado

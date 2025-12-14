@@ -1,92 +1,75 @@
-// lmx-megawifi/frontend/src/components/DhcpLeasePanel.jsx - v2.0 (Refatorado) - COMPONENTE PASSIVO
 import React from 'react';
+import { HiOutlineExclamationCircle, HiOutlineClock } from 'react-icons/hi';
 
-const styles = {
-    panel: {
-        marginTop: '20px',
-        padding: '20px',
-        background: '#fff',
-        border: '1px solid #dee2e6',
-        borderRadius: '8px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-    },
-    title: {
-        margin: '0 0 15px 0',
-        borderBottom: '1px solid #ccc',
-        paddingBottom: '10px',
-    },
-    table: {
-        width: '100%',
-        borderCollapse: 'collapse',
-    },
-    th: {
-        padding: '12px',
-        borderBottom: '2px solid #dee2e6',
-        textAlign: 'left',
-        background: '#f8f9fa',
-    },
-    td: {
-        padding: '12px',
-        borderBottom: '1px solid #dee2e6',
-    },
-};
-
-// O componente agora é "burro". Ele apenas recebe os dados e os exibe.
-// A lógica de useState, useEffect e axios foi REMOVIDA.
 const DhcpLeasePanel = ({ leases, error, loading }) => {
     
-    // A mensagem de "Carregando" agora é controlada pela página pai.
-    if (loading) {
-        return (
-            <div style={styles.panel}>
-                <h3 style={styles.title}>Clientes Conectados (DHCP)</h3>
-                <p>Carregando lista de clientes...</p>
-            </div>
-        );
-    }
-    
-    // A mensagem de erro também é controlada pela página pai.
-    if (error) {
-         return (
-            <div style={styles.panel}>
-                <h3 style={styles.title}>Clientes Conectados (DHCP)</h3>
-                <p style={{ color: 'red' }}>{error}</p>
-            </div>
-        );
-    }
+    const renderContent = () => {
+        if (loading) {
+            return (
+                <tr>
+                    <td colSpan="4" className="px-6 py-10 text-center">
+                        <div className="flex justify-center items-center gap-2 text-gray-500">
+                            <HiOutlineClock className="h-5 w-5 animate-spin" />
+                            <span>Carregando clientes conectados...</span>
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
+        
+        if (error) {
+            return (
+                <tr>
+                    <td colSpan="4" className="px-6 py-10 text-center">
+                        <div className="flex flex-col items-center gap-2 text-red-500">
+                            <HiOutlineExclamationCircle className="h-8 w-8" />
+                            <span className="font-medium">{error}</span>
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
 
-    // Se não há dados, não mostra nada para evitar um painel vazio.
-    if (!leases) {
-        return null;
-    }
+        if (!leases || leases.length === 0) {
+            return (
+                <tr>
+                    <td colSpan="4" className="px-6 py-10 text-center text-gray-500">
+                        Nenhum cliente conectado encontrado na rede DHCP.
+                    </td>
+                </tr>
+            );
+        }
+
+        return leases.map(lease => (
+            <tr key={lease.id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-700">{lease.address}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-500">{lease.macAddress}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-medium">{lease.hostName || '-'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lease.status}</td>
+            </tr>
+        ));
+    };
 
     return (
-        <div style={styles.panel}>
-            <h3 style={styles.title}>Clientes Conectados (DHCP)</h3>
-            <table style={styles.table}>
-                <thead>
-                    <tr>
-                        <th style={styles.th}>Endereço IP</th>
-                        <th style={styles.th}>Endereço MAC</th>
-                        <th style={styles.th}>Nome do Host</th>
-                        <th style={styles.th}>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {leases.length > 0 ? leases.map(lease => (
-                        <tr key={lease.id}>
-                            <td style={styles.td}>{lease.address}</td>
-                            <td style={styles.td}>{lease.macAddress}</td>
-                            <td style={styles.td}>{lease.hostName}</td>
-                            <td style={styles.td}>{lease.status}</td>
-                        </tr>
-                    )) : (
+        <div className="mt-8 bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="p-4 border-b border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900">Clientes Conectados (DHCP)</h3>
+            </div>
+            <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
                         <tr>
-                            <td colSpan="4" style={{...styles.td, textAlign: 'center'}}>Nenhum cliente encontrado.</td>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Endereço IP</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Endereço MAC</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome do Host</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                        {renderContent()}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

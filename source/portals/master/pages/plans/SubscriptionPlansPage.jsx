@@ -1,10 +1,8 @@
-// frontend/src/pages/SubscriptionPlansPage.jsx - v3 - ESTRATÉGIA DE PLANOS FINAL
-
 import React from 'react';
 import styles from '@css/ListPage.module.css';
-import planStyles from '@css/SubscriptionPlansPage.module.css'; // 1. Importa um CSS específico para esta página
+import planStyles from '@css/SubscriptionPlansPage.module.css';
 
-const SubscriptionPlansPage = () => {
+const MasterSubscriptionPage = () => {
 
     // --- DADOS FINAIS DOS PLANOS (MOCK DATA) ---
     const finalPlans = [
@@ -56,4 +54,4 @@ const SubscriptionPlansPage = () => {
     );
 };
 
-export default SubscriptionPlansPage;
+export default MasterSubscriptionPage;

@@ -20,13 +20,30 @@ export default defineConfig({
   
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './source' ),
+      // ===================================================================
+      // SEUS ALIASES ORIGINAIS - MANTIDOS 100% INTACTOS
+      // ===================================================================
+      '@': path.resolve(__dirname, './source'  ),
       '@components': path.resolve(__dirname, './source/portals/master/components'),
-      '@pages': path.resolve(__dirname, './source/portals/master/pages'),
-      '@css': path.resolve(__dirname, './source/portals/master/css'),
+      '@pages': path.resolve(__dirname, './source/portals/master/pages'),      
+      '@css': path.resolve(__dirname, './source/portals/master/css'),          
       '@styles': path.resolve(__dirname, './source/styles'),
       '@api': path.resolve(__dirname, './source/api'),
       '@global-pages': path.resolve(__dirname, './source/pages'),
+
+      // ===================================================================
+      // NOVOS ALIASES (COMPLEMENTARES E NÃO DESTRUTIVOS)
+      // ===================================================================
+      
+      // --- Alias para Componentes GLOBAIS ---
+      '@global-components': path.resolve(__dirname, './source/components'),
+
+      // --- Aliases para o Portal ACCOUNT ---
+      // Use estes para tudo que for específico do portal da conta
+      '@account': path.resolve(__dirname, './source/portals/account'),
+      '@account-components': path.resolve(__dirname, './source/portals/account/components'),
+      '@account-css': path.resolve(__dirname, './source/portals/account/css'),
+      '@account-pages': path.resolve(__dirname, './source/portals/account/pages'),
     },
   },
   
